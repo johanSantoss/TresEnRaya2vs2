@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">TresEnRaya2vs2</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- titulos -->
+    <string name="titulo_dificultad">CHOOSE A DIFFICULTY</string>
+    <string name="titulo_modo">SELECT MODE</string>
+    <string name="titulo_jugando">Playing...</string>
+    <string name="titulo_ganadorPlayer">WIN!</string>
+    <string name="titulo_ganadorMachine">The machine is the winner!</string>
+    <string name="titulo_ganadorPlayer1">The winner is PLAYER-1</string>
+    <string name="titulo_ganadorPlayer2">The winner is PLAYER-2</string>
+
+    <!-- textos -->
+    <string name="d_facil">EASY</string>
+    <string name="d_medio">MEDIUM</string>
+    <string name="d_dificil">HARD</string>
+    <string name="modo1">PLAYER vs MACHINE</string>
+    <string name="modo2">PLAYER-1 vs PLAYER-2</string>
+
+
 </resources>

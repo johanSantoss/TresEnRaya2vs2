@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menu">
 
+    <fragment
+        android:id="@+id/menu"
+        android:name="cat.copernic.johan.tresenraya2vs2.menu.Menu"
+        android:label="menu_fragment"
+        tools:layout="@layout/menu_fragment" >
+        <action
+            android:id="@+id/action_menu_to_onePlayer"
+            app:destination="@id/onePlayer" />
+        <action
+            android:id="@+id/action_menu_to_twoPlayers"
+            app:destination="@id/twoPlayers" />
+    </fragment>
+    <fragment
+        android:id="@+id/onePlayer"
+        android:name="cat.copernic.johan.tresenraya2vs2.onePlayer.OnePlayer"
+        android:label="one_player_fragment"
+        tools:layout="@layout/one_player_fragment" />
+    <fragment
+        android:id="@+id/twoPlayers"
+        android:name="cat.copernic.johan.tresenraya2vs2.twoPlayers.TwoPlayers"
+        android:label="two_players_fragment"
+        tools:layout="@layout/two_players_fragment" />
 </navigation>
