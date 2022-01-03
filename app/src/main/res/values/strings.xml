@@ -16,6 +16,6 @@
     <string name="d_dificil">HARD</string>
     <string name="modo1">PLAYER vs MACHINE</string>
     <string name="modo2">PLAYER-1 vs PLAYER-2</string>
-
+    <string name="restart">RESTART</string>
 
 </resources>

@@ -20,4 +20,6 @@ class MoutionActivity : AppCompatActivity() {
     private fun menuGame(){
         Toast.makeText(this, "success OnClick!", Toast.LENGTH_LONG).show()
     }
+
+
 }
