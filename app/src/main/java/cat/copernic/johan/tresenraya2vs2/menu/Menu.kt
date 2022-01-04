@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.NavHostFragment
 import cat.copernic.johan.tresenraya2vs2.R
 import cat.copernic.johan.tresenraya2vs2.databinding.MenuFragmentBinding
 
@@ -65,11 +66,13 @@ class Menu : Fragment() {
     }
 
     private fun buttonModo1(){
-//        val action = MenuDirections
+        val action = MenuDirections.actionMenuToOnePlayer()
+        NavHostFragment.findNavController(this).navigate(action)
     }
 
     private fun buttonModo2(){
-//        val action = MenuDirections
+        val action = MenuDirections.actionMenuToTwoPlayers()
+        NavHostFragment.findNavController(this).navigate(action)
     }
 
     private fun comprobarEstado(){
