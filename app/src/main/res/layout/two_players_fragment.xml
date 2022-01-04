@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn11"
-        app:layout_constraintTop_toTopOf="@+id/btn11" />
+        app:layout_constraintTop_toTopOf="@+id/btn11"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn00"
@@ -25,7 +26,8 @@
         app:layout_constraintEnd_toStartOf="@+id/btn11"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn11" />
+        app:layout_constraintTop_toTopOf="@+id/btn11"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn44"
@@ -36,7 +38,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn33"
         app:layout_constraintTop_toBottomOf="@+id/tvEstadoModo2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvEstadoModo2"
@@ -72,7 +75,8 @@
         app:layout_constraintEnd_toStartOf="@+id/btn77"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn77" />
+        app:layout_constraintTop_toTopOf="@+id/btn77"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn77"
@@ -83,7 +87,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn66"
         app:layout_constraintTop_toBottomOf="@+id/tvEstadoModo2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn88"
@@ -93,7 +98,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn77"
-        app:layout_constraintTop_toTopOf="@+id/btn77" />
+        app:layout_constraintTop_toTopOf="@+id/btn77"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn33"
@@ -103,7 +109,8 @@
         app:layout_constraintEnd_toStartOf="@+id/btn44"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn44" />
+        app:layout_constraintTop_toTopOf="@+id/btn44"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn55"
@@ -113,17 +120,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn44"
-        app:layout_constraintTop_toTopOf="@+id/btn44" />
+        app:layout_constraintTop_toTopOf="@+id/btn44"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn11"
         android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/btn44"
+        app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintEnd_toStartOf="@+id/btn22"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn00"
         app:layout_constraintTop_toBottomOf="@+id/tvEstadoModo2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
