@@ -31,7 +31,8 @@
     <Transition
         motion:constraintSetStart="@+id/start"
         motion:constraintSetEnd="@+id/end"
-        motion:autoTransition="animateToEnd">
+        motion:autoTransition="animateToEnd"
+        motion:duration="3000">
         <OnClick />
     </Transition>
 </MotionScene>
