@@ -14,6 +14,65 @@
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="0" />
+        <Constraint
+            android:id="@+id/tvDificultad"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="275dp"
+            android:layout_height="24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/imageView2"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/btnEasy"
+            motion:layout_constraintEnd_toStartOf="@+id/btnMedio"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/tvDificultad"
+            motion:layout_constraintHorizontal_bias="0.0"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/btnMedio"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/btnEasy"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/btnEasy"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/btnEasy"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/tvModo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/btnMedio"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/btnModo1"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/tvModo"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/btnModo2"
+            motion:layout_constraintEnd_toEndOf="@+id/btnModo1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/btnModo1"
+            motion:layout_constraintStart_toStartOf="@+id/btnModo1"
+            android:alpha="0" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -25,6 +84,65 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintVertical_bias="0.089999974"
             motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:alpha="1" />
+        <Constraint
+            android:id="@+id/tvDificultad"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="275dp"
+            android:layout_height="24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/imageView2"
+            android:alpha="1" />
+        <Constraint
+            android:id="@+id/btnEasy"
+            motion:layout_constraintEnd_toStartOf="@+id/btnMedio"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/tvDificultad"
+            motion:layout_constraintHorizontal_bias="0.0"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:alpha="1" />
+        <Constraint
+            android:id="@+id/btnMedio"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/btnEasy"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/btnEasy"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="@+id/btnEasy"
+            android:alpha="1" />
+        <Constraint
+            android:id="@+id/btnModo1"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/tvModo"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:alpha="1" />
+        <Constraint
+            android:id="@+id/btnModo2"
+            motion:layout_constraintEnd_toEndOf="@+id/btnModo1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/btnModo1"
+            motion:layout_constraintStart_toStartOf="@+id/btnModo1"
+            android:alpha="1" />
+        <Constraint
+            android:id="@+id/tvModo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/btnMedio"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="1" />
     </ConstraintSet>
