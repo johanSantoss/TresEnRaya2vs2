@@ -65,11 +65,11 @@ class Menu : Fragment() {
     }
 
     private fun buttonModo1(){
-
+//        val action = MenuDirections
     }
 
     private fun buttonModo2(){
-
+//        val action = MenuDirections
     }
 
     private fun comprobarEstado(){
