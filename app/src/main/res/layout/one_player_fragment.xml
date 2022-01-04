@@ -24,8 +24,8 @@
 
     <Button
         android:id="@+id/btn6"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn7"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/btn7"
@@ -36,8 +36,8 @@
 
     <Button
         android:id="@+id/btn7"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/btn8"
@@ -49,8 +49,8 @@
 
     <Button
         android:id="@+id/btn8"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn7"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,8 +61,8 @@
 
     <Button
         android:id="@+id/btn3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn4"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/btn4"
@@ -73,8 +73,8 @@
 
     <Button
         android:id="@+id/btn4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toTopOf="@+id/btn7"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/btn5"
@@ -86,8 +86,8 @@
 
     <Button
         android:id="@+id/btn5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn4"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,8 +98,8 @@
 
     <Button
         android:id="@+id/btn0"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn1"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/btn1"
@@ -110,8 +110,8 @@
 
     <Button
         android:id="@+id/btn1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toTopOf="@+id/btn4"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/btn2"
@@ -123,8 +123,8 @@
 
     <Button
         android:id="@+id/btn2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn1"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
