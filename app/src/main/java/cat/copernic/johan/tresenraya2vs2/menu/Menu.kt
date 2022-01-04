@@ -1,11 +1,13 @@
 package cat.copernic.johan.tresenraya2vs2.menu
 
+import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import cat.copernic.johan.tresenraya2vs2.R
@@ -58,16 +60,26 @@ class Menu : Fragment() {
     }
 
     private fun buttonEasy(){
-
+        binding.btnEasy.setTextColor(Color.BLACK)
+        binding.btnMedio.setTextColor(Color.WHITE)
+        viewModel.setLevel(1)
     }
 
     private fun buttonMedio(){
-
+        binding.btnEasy.setTextColor(Color.WHITE)
+        binding.btnMedio.setTextColor(Color.BLACK)
+        viewModel.setLevel(2)
     }
 
     private fun buttonModo1(){
-        val action = MenuDirections.actionMenuToOnePlayer()
-        NavHostFragment.findNavController(this).navigate(action)
+        if (viewModel.level.value != 0){
+            val action = MenuDirections.actionMenuToOnePlayer()
+            NavHostFragment.findNavController(this).navigate(action)
+        }else{
+            Toast.makeText(activity, "Select level!", Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 
     private fun buttonModo2(){
