@@ -46,9 +46,7 @@ class Menu : Fragment() {
             buttonModo2()
         }
 
-
-
-
+        comprobarEstado()
 
         return binding.root
     }
@@ -63,6 +61,7 @@ class Menu : Fragment() {
         binding.btnEasy.setTextColor(Color.BLACK)
         binding.btnMedio.setTextColor(Color.WHITE)
         viewModel.setLevel(1)
+
     }
 
     private fun buttonMedio(){
@@ -88,7 +87,16 @@ class Menu : Fragment() {
     }
 
     private fun comprobarEstado(){
-
+        if (viewModel.level.value == 2) {
+            binding.btnEasy.setTextColor(Color.WHITE)
+            binding.btnMedio.setTextColor(Color.BLACK)
+        } else if (viewModel.level.value == 1){
+            binding.btnEasy.setTextColor(Color.BLACK)
+            binding.btnMedio.setTextColor(Color.WHITE)
+        } else {
+            binding.btnEasy.setTextColor(Color.WHITE)
+            binding.btnMedio.setTextColor(Color.WHITE)
+        }
     }
 
 }
