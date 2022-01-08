@@ -7,6 +7,8 @@
     <string name="titulo_jugando">Playing...</string>
     <string name="titulo_ganadorPlayer">WIN!</string>
     <string name="titulo_ganadorMachine">The machine is the winner!</string>
+    <string name="titulo_jugandoPlayer1">Turn of player 1...</string>
+    <string name="titulo_jugandoPlayer2">Turn of player 2...</string>
     <string name="titulo_ganadorPlayer1">The winner is PLAYER-1</string>
     <string name="titulo_ganadorPlayer2">The winner is PLAYER-2</string>
 
