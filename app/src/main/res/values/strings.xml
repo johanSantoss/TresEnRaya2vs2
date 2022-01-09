@@ -4,6 +4,7 @@
     <!-- titulos -->
     <string name="titulo_dificultad">CHOOSE A DIFFICULTY</string>
     <string name="titulo_modo">SELECT MODE</string>
+    <string name="titulo_select_player">SELECT PLAYER...</string>
     <string name="titulo_jugando">Playing...</string>
     <string name="titulo_ganadorPlayer">WIN!</string>
     <string name="titulo_ganadorMachine">The machine is the winner!</string>
@@ -20,5 +21,7 @@
     <string name="modo2">PLAYER-1 vs PLAYER-2</string>
     <string name="restart">RESTART</string>
     <string name="btnGo">Go!</string>
+    <string name="btnPlayer1">Player-1</string>
+    <string name="btnPlayer2">Player-2</string>
 
 </resources>

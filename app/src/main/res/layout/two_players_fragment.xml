@@ -28,6 +28,7 @@
             android:id="@+id/btn00"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:onClick="ponerFicha"
             app:layout_constraintBottom_toBottomOf="@+id/btn11"
             app:layout_constraintEnd_toStartOf="@+id/btn11"
             app:layout_constraintHorizontal_bias="0.5"
@@ -60,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.100000024" />
+            app:layout_constraintVertical_bias="0.060000002" />
 
         <Button
             android:id="@+id/btnRestart2"
@@ -68,10 +69,10 @@
             android:layout_height="wrap_content"
             android:text="@string/restart"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/btn00"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn11"
+            app:layout_constraintEnd_toStartOf="@+id/btnPlayer2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnPlayer1"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -142,6 +143,28 @@
             app:layout_constraintTop_toBottomOf="@+id/tvEstadoModo2"
             app:layout_constraintVertical_bias="1.0"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/btnPlayer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnPlayer1"
+            app:layout_constraintBottom_toBottomOf="@+id/btnRestart2"
+            app:layout_constraintEnd_toStartOf="@+id/btnRestart2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnRestart2" />
+
+        <Button
+            android:id="@+id/btnPlayer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnPlayer2"
+            app:layout_constraintBottom_toBottomOf="@+id/btnRestart2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnRestart2"
+            app:layout_constraintTop_toTopOf="@+id/btnRestart2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

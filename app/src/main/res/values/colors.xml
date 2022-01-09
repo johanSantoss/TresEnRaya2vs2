@@ -12,4 +12,5 @@
     <color name="green_win">#12B800</color>
     <color name="btnEasy">#FF03DAC5</color>
     <color name="btnMedio">#FF6200EE</color>
+    <color name="btnTablero">#F54A36</color>
 </resources>
