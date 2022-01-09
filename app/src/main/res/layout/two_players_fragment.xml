@@ -52,7 +52,7 @@
             android:id="@+id/tvEstadoModo2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/titulo_jugando"
+            android:text="@string/titulo_select_player"
             android:textAlignment="center"
             android:textColor="@color/red"
             android:textSize="34sp"
@@ -73,7 +73,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btnPlayer2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btnPlayer1"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tvEstadoModo2" />
 
         <Button
             android:id="@+id/btn66"

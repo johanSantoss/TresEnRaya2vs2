@@ -11,6 +11,12 @@ class TwoPlayersViewModel : ViewModel() {
     fun setPlayer (player : Int){
         _player.value = player
     }
+    // jugador ganador------------------------------------------------
+    private val _ganador = MutableLiveData(0)
+    val ganador: LiveData<Int> get() = _ganador
+    fun setGanador (ganador : Int){
+        _ganador.value = ganador
+    }
 
     // resetGame-----------------------------------------------------
     //
@@ -34,8 +40,9 @@ class TwoPlayersViewModel : ViewModel() {
     // total de Fichas jugadas--------------------------------------
     private val _totalFichas = MutableLiveData(0)
     val totalFichas: LiveData<Int> get() = _totalFichas
+    // corregir incrementa en 1-------------------------------------------------------------------------------------
     fun upTotalFichas(){
-        _totalFichas.value =+ 1
+        _totalFichas.value!!.plus(1)
     }
     fun setTotalFichas(){
         _totalFichas.value = 0
@@ -47,8 +54,8 @@ class TwoPlayersViewModel : ViewModel() {
                                                             0,0,0,
                                                             0,0,0)
     val tablero : List<Int>  get() = _tablero
-    fun setPosTablero(index : Int , jugada : Int){
-        _tablero.set(index, jugada)
+    fun setPosTablero(index : Int , player : Int){
+        _tablero.set(index, player)
     }
     fun setTablero (tablero : List<Int>){
         _tablero.clear()
@@ -61,7 +68,12 @@ class TwoPlayersViewModel : ViewModel() {
     fun setBotones(listaBotones : List<Int>){
         _botones.addAll(listaBotones)
     }
-
+    // jugada ganadora--------------------------------------------------
+    private val _jugadaGanadora: MutableList<Int> = mutableListOf(-1, -1, -1)
+    val jugadaGanadora : List<Int>  get() = _jugadaGanadora
+    fun setJugadaGanadora(listaGanadora : List<Int>){
+        _botones.addAll(listaGanadora)
+    }
 
     // resetVariablesIniciarPartida------------------------------------
     fun iniciarPartida(){
@@ -69,6 +81,8 @@ class TwoPlayersViewModel : ViewModel() {
         setResetGame()
         setEstadoPartida(0)
         setTotalFichas()
+        setGanador(0)
+        setJugadaGanadora(arrayListOf(-1, -1, -1))
     }
 
 
