@@ -1,6 +1,5 @@
 package cat.copernic.johan.tresenraya2vs2.twoPlayers
 
-import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,10 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import cat.copernic.johan.tresenraya2vs2.R
-import cat.copernic.johan.tresenraya2vs2.databinding.MenuFragmentBinding
 import cat.copernic.johan.tresenraya2vs2.databinding.TwoPlayersFragmentBinding
-import cat.copernic.johan.tresenraya2vs2.menu.MenuViewModel
-import com.google.android.material.snackbar.Snackbar
+
 
 class TwoPlayers : Fragment() {
 
@@ -314,16 +311,16 @@ class TwoPlayers : Fragment() {
 
     private fun selectPlayer1() {
         disableBtnPlayers()
-        binding.tvEstadoModo2.setText(R.string.titulo_jugandoPlayer1)
         viewModel.setPlayer(1)
         viewModel.setEstadoPartida(1)
+        binding.tvEstadoModo2.setText(R.string.titulo_jugandoPlayer1)
     }
 
     private fun selectPlayer2() {
         disableBtnPlayers()
-        binding.tvEstadoModo2.setText(R.string.titulo_jugandoPlayer2)
         viewModel.setPlayer(2)
         viewModel.setEstadoPartida(1)
+        binding.tvEstadoModo2.setText(R.string.titulo_jugandoPlayer2)
     }
 
     private fun disableBtnPlayers() {
@@ -366,9 +363,12 @@ class TwoPlayers : Fragment() {
     private fun fichaPlayer1(boton: View) {
         val player = 1
         val index = viewModel.botones.indexOf(boton.id)
+
         setBackgroundPosTablero(index, player)
         viewModel.upTotalFichas()
         viewModel.setPosTablero(index, player)
+
+        Toast.makeText(activity, "index-$index // tFichas-${viewModel.totalFichas.value} // datoTablero-${viewModel.tablero.get(index)}", Toast.LENGTH_SHORT).show()
         comprobarGanador(index, player)
         if (viewModel.estadoPartida.value != 2) {
             viewModel.setPlayer(2)
@@ -379,9 +379,12 @@ class TwoPlayers : Fragment() {
     private fun fichaPlayer2(boton: View) {
         val player = 2
         val index = viewModel.botones.indexOf(boton.id)
+
         setBackgroundPosTablero(index, player)
         viewModel.upTotalFichas()
         viewModel.setPosTablero(index, player)
+
+        Toast.makeText(activity, "index-$index // tFichas-${viewModel.totalFichas.value} // datoTablero-${viewModel.tablero.get(index)}", Toast.LENGTH_SHORT).show()
         comprobarGanador(index, player)
         if (viewModel.estadoPartida.value != 2) {
             viewModel.setPlayer(1)
@@ -427,8 +430,6 @@ class TwoPlayers : Fragment() {
         }
     }
 
-
-    //--------------------------------------------------------------------------------------------------------------------------
     private fun comprobarGanador(posJugada: Int, player: Int) {
         var final = false
         if (viewModel.totalFichas.value!! >= 5){

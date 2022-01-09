@@ -11,6 +11,8 @@
     <string name="titulo_ganadorMachine">The machine is the winner!</string>
     <string name="titulo_jugandoPlayer1">Turn of player 1...</string>
     <string name="titulo_jugandoPlayer2">Turn of player 2...</string>
+    <string name="titulo_jugandoPlayer">Turn of player 1...</string>
+    <string name="titulo_jugandoMachine">Turn of machine...</string>
     <string name="titulo_ganadorPlayer1">The winner is PLAYER-1</string>
     <string name="titulo_ganadorPlayer2">The winner is PLAYER-2</string>
 
@@ -24,5 +26,7 @@
     <string name="btnGo">Go!</string>
     <string name="btnPlayer1">Player-1</string>
     <string name="btnPlayer2">Player-2</string>
+    <string name="btnPlayer">Player</string>
+    <string name="btnMachine">Machine</string>
 
 </resources>

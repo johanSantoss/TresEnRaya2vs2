@@ -42,7 +42,7 @@ class TwoPlayersViewModel : ViewModel() {
     val totalFichas: LiveData<Int> get() = _totalFichas
     // corregir incrementa en 1-------------------------------------------------------------------------------------
     fun upTotalFichas(){
-        _totalFichas.value!!.plus(1)
+        _totalFichas.value = _totalFichas.value?.plus(1)
     }
     fun setTotalFichas(){
         _totalFichas.value = 0
@@ -69,7 +69,7 @@ class TwoPlayersViewModel : ViewModel() {
         _botones.addAll(listaBotones)
     }
     // jugada ganadora--------------------------------------------------
-    private val _jugadaGanadora: MutableList<Int> = mutableListOf(-1, -1, -1)
+    private val _jugadaGanadora: MutableList<Int> = mutableListOf()
     val jugadaGanadora : List<Int>  get() = _jugadaGanadora
     fun setJugadaGanadora(listaGanadora : List<Int>){
         _botones.addAll(listaGanadora)
@@ -82,7 +82,7 @@ class TwoPlayersViewModel : ViewModel() {
         setEstadoPartida(0)
         setTotalFichas()
         setGanador(0)
-        setJugadaGanadora(arrayListOf(-1, -1, -1))
+        setJugadaGanadora(arrayListOf())
     }
 
 
