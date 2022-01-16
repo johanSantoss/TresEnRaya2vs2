@@ -30,18 +30,19 @@
     <string name="btnMachine">Machine</string>
     <string name="btnSettings">Settings</string>
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="nickName_header">Write the nick name</string>
+    <string name="level_header">Choose the level</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <!-- Nick Name Preferences -->
+    <string name="nickName1">Name of player 1</string>
+    <string name="nickName2">Name of player 2</string>
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- Level Preferences -->
+    <string name="lvlEasy">Easy level</string>
+    <string name="lvlMedio">Medium level</string>
+    <string name="lvlEasy_on"> Puedes activar el nivel medio </string>
+    <string name="lvlEasy_off"> Se ha de activar el nivel fácil </string>
+    <string name="lvlMedio_on"> Nivel medio activado </string>
+    <string name="lvlMedio_off"> Activar primero nivel fácil </string>
 
 </resources>
