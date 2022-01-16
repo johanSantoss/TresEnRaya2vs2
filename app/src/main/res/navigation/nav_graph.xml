@@ -21,10 +21,19 @@
         android:id="@+id/onePlayer"
         android:name="cat.copernic.johan.tresenraya2vs2.onePlayer.OnePlayer"
         android:label="one_player_fragment"
-        tools:layout="@layout/one_player_fragment" />
+        tools:layout="@layout/one_player_fragment" >
+        <action
+            android:id="@+id/action_onePlayer_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
     <fragment
         android:id="@+id/twoPlayers"
         android:name="cat.copernic.johan.tresenraya2vs2.twoPlayers.TwoPlayers"
         android:label="two_players_fragment"
         tools:layout="@layout/two_players_fragment" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="cat.copernic.johan.tresenraya2vs2.settings.settings"
+        android:label="settings_fragment"
+        tools:layout="@layout/settings_fragment" />
 </navigation>

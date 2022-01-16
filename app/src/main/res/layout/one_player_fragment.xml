@@ -145,9 +145,21 @@
             android:layout_height="wrap_content"
             android:text="@string/restart"
             app:layout_constraintBottom_toTopOf="@+id/btn1"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnSettings"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEstadoModo1" />
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnSettings"
+            app:layout_constraintBottom_toBottomOf="@+id/btnRestart1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnRestart1"
+            app:layout_constraintTop_toTopOf="@+id/btnRestart1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

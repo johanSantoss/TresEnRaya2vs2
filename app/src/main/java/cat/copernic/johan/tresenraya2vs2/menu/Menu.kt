@@ -61,13 +61,14 @@ class Menu : Fragment() {
         binding.btnEasy.setTextColor(Color.BLACK)
         binding.btnMedio.setTextColor(Color.WHITE)
         viewModel.setLevel(1)
-
+        Toast.makeText(activity, "Nivel seleccionado: ${viewModel.level.value}", Toast.LENGTH_SHORT).show()
     }
 
     private fun buttonMedio(){
         binding.btnEasy.setTextColor(Color.WHITE)
         binding.btnMedio.setTextColor(Color.BLACK)
         viewModel.setLevel(2)
+        Toast.makeText(activity, "Nivel seleccionado: ${viewModel.level.value}", Toast.LENGTH_SHORT).show()
     }
 
     private fun buttonModo1(){

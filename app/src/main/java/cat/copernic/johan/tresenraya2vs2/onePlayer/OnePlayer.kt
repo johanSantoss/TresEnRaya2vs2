@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.NavHostFragment
 import cat.copernic.johan.tresenraya2vs2.R
 import cat.copernic.johan.tresenraya2vs2.databinding.OnePlayerFragmentBinding
 import cat.copernic.johan.tresenraya2vs2.menu.MenuViewModel
@@ -41,6 +42,9 @@ class OnePlayer : Fragment() {
         viewModel = ViewModelProvider(this).get(OnePlayerViewModel::class.java)
         binding.btnRestart1.setOnClickListener {
             resetGame()
+        }
+        binding.btnSettings.setOnClickListener {
+            goSettings()
         }
 
         binding.btn0.setOnClickListener {
@@ -790,5 +794,9 @@ class OnePlayer : Fragment() {
         }
     }
 
+    private fun goSettings(){
+        val action = OnePlayerDirections.actionOnePlayerToSettings()
+        NavHostFragment.findNavController(this).navigate(action)
+    }
 
 }
