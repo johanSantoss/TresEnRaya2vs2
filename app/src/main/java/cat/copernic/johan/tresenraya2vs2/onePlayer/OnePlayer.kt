@@ -84,13 +84,6 @@ class OnePlayer : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(OnePlayerViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
-
     private fun resetGame() {
         // si es 0 - pasar a 1
         // si es 1 - pasar btn reset / reset tablero
@@ -133,6 +126,7 @@ class OnePlayer : Fragment() {
                 } else {
                     binding.btn0.setBackgroundResource(R.drawable.cercle)
                 }
+                //binding.btn0.isEnabled = false
             }
             1 -> {
                 if (player == 1) {
@@ -140,6 +134,7 @@ class OnePlayer : Fragment() {
                 } else {
                     binding.btn1.setBackgroundResource(R.drawable.cercle)
                 }
+                //binding.btn1.isEnabled = false
             }
             2 -> {
                 if (player == 1) {
@@ -147,6 +142,7 @@ class OnePlayer : Fragment() {
                 } else {
                     binding.btn2.setBackgroundResource(R.drawable.cercle)
                 }
+                //binding.btn2.isEnabled = false
             }
             3 -> {
                 if (player == 1) {
@@ -154,6 +150,7 @@ class OnePlayer : Fragment() {
                 } else {
                     binding.btn3.setBackgroundResource(R.drawable.cercle)
                 }
+                //binding.btn3.isEnabled = false
             }
             4 -> {
                 if (player == 1) {
@@ -161,6 +158,7 @@ class OnePlayer : Fragment() {
                 } else {
                     binding.btn4.setBackgroundResource(R.drawable.cercle)
                 }
+                //binding.btn4.isEnabled = false
             }
             5 -> {
                 if (player == 1) {
@@ -168,6 +166,7 @@ class OnePlayer : Fragment() {
                 } else {
                     binding.btn5.setBackgroundResource(R.drawable.cercle)
                 }
+                //binding.btn5.isEnabled = false
             }
             6 -> {
                 if (player == 1) {
@@ -175,6 +174,7 @@ class OnePlayer : Fragment() {
                 } else {
                     binding.btn6.setBackgroundResource(R.drawable.cercle)
                 }
+                //binding.btn6.isEnabled = false
             }
             7 -> {
                 if (player == 1) {
@@ -182,6 +182,7 @@ class OnePlayer : Fragment() {
                 } else {
                     binding.btn7.setBackgroundResource(R.drawable.cercle)
                 }
+                //binding.btn7.isEnabled = false
             }
             8 -> {
                 if (player == 1) {
@@ -189,6 +190,7 @@ class OnePlayer : Fragment() {
                 } else {
                     binding.btn8.setBackgroundResource(R.drawable.cercle)
                 }
+                //binding.btn8.isEnabled = false
             }
         }
     }
@@ -321,7 +323,6 @@ class OnePlayer : Fragment() {
 
     }
 
-
     private fun ponerFicha(boton: View) {
         if (viewModel.estadoPartida.value == 0) {
             Toast.makeText(activity, "Select player to start!", Toast.LENGTH_SHORT).show()
@@ -334,31 +335,23 @@ class OnePlayer : Fragment() {
         }
 
     }
-//    fun prueba1(boton : View){
-//        Toast.makeText(activity, "${binding.btn11.id}", Toast.LENGTH_SHORT).show()
-//    }
-//    fun prueba2(boton : View){
-//        Toast.makeText(activity, "${boton.id}", Toast.LENGTH_SHORT).show()
-//    }
-//    // no sirve
-//    fun prueba3(boton : View){
-//        Toast.makeText(activity, "${binding.btn11.bottom}", Toast.LENGTH_SHORT).show()
-//    }
 
     private fun fichaPlayer1(boton: View) {
         val player = 1
         val index = viewModel.botones.indexOf(boton.id)
+        binding.tvEstadoModo1.setText(R.string.titulo_jugandoPlayer)
 
-        setBackgroundPosTablero(index, player)
-        viewModel.upTotalFichas()
-        viewModel.setPosTablero(index, player)
+        if (!viewModel.getStatusPos(index)){
+            setBackgroundPosTablero(index, player)
+            viewModel.upTotalFichas()
+            viewModel.setPosTablero(index, player)
 
-        Toast.makeText(activity, "index-$index // tFichas-${viewModel.totalFichas.value} // datoTablero-${viewModel.tablero.get(index)}", Toast.LENGTH_SHORT).show()
-        comprobarGanador(index, player)
-        if (viewModel.estadoPartida.value != 2) {
-            viewModel.setPlayer(2)
-            binding.tvEstadoModo1.setText(R.string.titulo_jugandoPlayer)
-            fichaMachine()
+            Toast.makeText(activity, "index-$index // tFichas-${viewModel.totalFichas.value} // datoTablero-${viewModel.tablero.get(index)}", Toast.LENGTH_SHORT).show()
+            comprobarGanador(index, player)
+            if (viewModel.estadoPartida.value != 2) {
+                viewModel.setPlayer(2)
+                fichaMachine()
+            }
         }
     }
 
@@ -368,6 +361,7 @@ class OnePlayer : Fragment() {
             // -------------- jugada logica
             val player = 2
             var indexButon: Int
+            binding.tvEstadoModo1.setText(R.string.titulo_jugandoPlayer1)
 
             if (viewModel.nivell.value == 1){
                 indexButon = comprobarJugadaMaquina1()
@@ -381,7 +375,7 @@ class OnePlayer : Fragment() {
             comprobarGanador(indexButon, player)
             if (viewModel.estadoPartida.value != 2) {
                 viewModel.setPlayer(1)
-                binding.tvEstadoModo1.setText(R.string.titulo_jugandoPlayer1)
+
             }
         }
 
@@ -648,8 +642,6 @@ class OnePlayer : Fragment() {
         } else {
             iniciarPartida()
         }
-
-
     }
 
     private fun setJugadaGanadora(jugadaGanadora: List<Int>, player: Int) {
@@ -798,5 +790,585 @@ class OnePlayer : Fragment() {
         val action = OnePlayerDirections.actionOnePlayerToSettings()
         NavHostFragment.findNavController(this).navigate(action)
     }
+
+//    //--------------------------- se deja para el final, jugada perfecta!
+//    private fun comprobarJugadaMaquina3(): Int {
+//        // comprobar la siguiente jugada de la maquina
+//        var proxJugada: Int = 0
+//
+//        if (totalFichas < 2 && tablero[4] == 0) {
+//            proxJugada = 4
+//        } else if (totalFichas < 2 && tablero[4] == 1) {
+//            proxJugada = listOf(0, 2, 6, 8).random()
+//        } else if (totalFichas == 3) {
+//            // ---------------------------------------------------------------------exterior-esquina
+//            // esquina sup izq--done
+//            if (tablero[4] == -1 && tablero[0] == 1) {
+//                if (tablero[1] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 1
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 6
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 3
+//                }
+//
+//                // esquina sup der -------Done
+//            } else if (tablero[4] == -1 && tablero[2] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 1
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(0, 1, 7).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = listOf(1, 3, 5, 7).random()
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = listOf(0, 3, 5).random()
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 5
+//                }
+//                // esquina inf der
+//            } else if (tablero[4] == -1 && tablero[8] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = listOf(1, 3, 5, 7).random()
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(2, 3, 5).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(1, 2, 7).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 6
+//                }
+//                // esquina inf izq
+//            } else if (tablero[4] == -1 && tablero[6] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(3, 5, 8).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = listOf(1, 3, 5, 7).random()
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = listOf(1, 7, 8).random()
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 7
+//                }
+//                // -------------------------------------------------------------------exterior-medio
+//                // medio--top
+//            } else if (tablero[4] == -1 && tablero[1] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(0, 6).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = listOf(2, 8).random()
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = listOf(0, 3, 5).random()
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = listOf(0, 2, 6, 8).random()
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = listOf(2, 3, 5).random()
+//                }
+//                // medio--left
+//            } else if (tablero[4] == -1 && tablero[3] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 6
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(0, 2).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = listOf(0, 1, 7).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = listOf(0, 2, 6, 8).random()
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = listOf(6, 8).random()
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = listOf(1, 6, 7).random()
+//                }
+//                // medio--right
+//            } else if (tablero[4] == -1 && tablero[5] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = listOf(1, 2, 7).random()
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(0, 2).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(0, 2, 6, 8).random()
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = listOf(1, 7, 8).random()
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = listOf(6, 8).random()
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 2
+//                }
+//                // medio--but
+//            } else if (tablero[4] == -1 && tablero[7] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = listOf(3, 5, 6).random()
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(0, 2, 6, 8).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = listOf(3, 5, 8).random()
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(0, 6).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = listOf(2, 8).random()
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 6
+//                }
+//                // ----------------------------------------------------------------------------medio
+//                // left - top
+//            } else if (tablero[4] == 1 && tablero[0] == -1) {
+//                if (tablero[1] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 6
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 1
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 2
+//                }
+//                // right - top
+//            } else if (tablero[4] == 1 && tablero[2] == -1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 1
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 0
+//                }
+//                // left - but
+//            } else if (tablero[4] == 1 && tablero[6] == -1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 1
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 0
+//                }
+//                //right - but
+//            } else if (tablero[4] == 1 && tablero[8] == -1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 6
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 6
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 1
+//                }
+//            }
+///////////////////////////////////////////////////////////////
+//        } else if (totalFichas >= 5) {
+//            // ---------------------------------------------------------------------exterior-esquina
+//            //--------------------------------------------------------------------------------------------------------------------------------DONE-----------------------------
+//            // esquina sup izq--done
+//            if (tablero[0] == 1 && tablero[4] == -1) {
+//                if (tablero[1] == 1 && tablero[2] == -1) {
+//                    if (totalFichas == 5) {
+//                        if (tablero[6] == 0) {
+//                            proxJugada = 6
+//                        } else {
+//                            proxJugada = 3
+//                        }
+//                    } else {
+//                        if (totalFichas == 7) {
+//                            if (tablero[5] == 1) {
+//                                proxJugada = listOf(7, 8).random()
+//                            } else {
+//                                proxJugada = 5
+//                            }
+//                        }
+//                    }
+//                } else if (tablero[2] == 1 && tablero[1] == -1) {
+//                    if (totalFichas == 5) {
+//                        if (tablero[7] == 0) {
+//                            proxJugada = 7
+//                        } else {
+//                            proxJugada = 3
+//                        }
+//                    } else if (totalFichas == 7) {
+//                        if (tablero[3] == -1 && tablero[5] == 0) {
+//                            proxJugada = 5
+//                        } else {
+//                            proxJugada = listOf(6, 8).random()
+//                        }
+//                    }
+//                } else if (tablero[3] == 1 && tablero[6] == -1) {
+//                    if (totalFichas == 5) {
+//                        if (tablero[2] == 0) {
+//                            proxJugada = 2
+//                        } else {
+//                            proxJugada = 1
+//                        }
+//                    } else if (totalFichas == 7) {
+//                        if (tablero[7] == 0) {
+//                            proxJugada = 7
+//                        } else {
+//                            proxJugada = listOf(5, 8).random()
+//                        }
+//                    }
+//
+//                } else if (tablero[5] == 1) {
+//                    if (totalFichas == 5) {
+//                        if (tablero[6] == 0) {
+//                            proxJugada = 6
+//                        } else {
+//                            proxJugada = 3
+//                        }
+//                    } else if (totalFichas == 7) {
+//                        if (tablero[7] == 1 || tablero[8] == 1) {
+//                            if (tablero[7] == 1) {
+//                                proxJugada = 8
+//                            } else {
+//                                proxJugada = 7
+//                            }
+//                        } else {
+//                            proxJugada = listOf(7, 8).random()
+//                        }
+//                    }
+//                } else if (tablero[6] == 1 && tablero[3] == -1) {
+//                    if (totalFichas == 5) {
+//                        if (tablero[5] == 1) {
+//                            proxJugada = listOf(1, 7).random()
+//                        } else {
+//                            proxJugada = 5
+//                        }
+//                    } else if (totalFichas == 7) {
+//                        if (tablero[1] == -1) {
+//                            if (tablero[7] == 0) {
+//                                proxJugada = 7
+//                            } else {
+//                                proxJugada = listOf(2, 8).random()
+//                            }
+//                        } else {
+//                            if (tablero[1] == 0) {
+//                                proxJugada = 1
+//                            } else {
+//                                proxJugada = listOf(2, 8).random()
+//                            }
+//                        }
+//                    }
+//
+//                } else if (tablero[7] == 1) {
+//                    if (tablero[3] == -1 && tablero[5] == 1) {
+//                        if (totalFichas == 5) {
+//                            proxJugada = listOf(2, 8).random()
+//                        } else if (totalFichas == 7) {
+//                            if (tablero[8] == -1) {
+//                                if (tablero[2] == 1) {
+//                                    proxJugada = 1
+//                                } else {
+//                                    proxJugada = 2
+//                                }
+//                            } else if (tablero[2] == -1) {
+//                                if (tablero[6] == 1) {
+//                                    proxJugada = 8
+//                                } else if (tablero[8] == 1) {
+//                                    proxJugada = 6
+//                                }
+//                            }
+//                        }
+//                    } else {
+//                        proxJugada = 5
+//                    }
+//                    if (tablero[5] == -1 && tablero[3] == 1) {
+//                        if (totalFichas == 5) {
+//                            proxJugada = 6
+//                        } else if (totalFichas == 7) {
+//                            if (tablero[2] == 1) {
+//                                proxJugada = 1
+//                            } else if (tablero[1] == 1) {
+//                                proxJugada = 2
+//                            }
+//                        }
+//                        proxJugada = 6
+//                    } else {
+//                        proxJugada = 3
+//                    }
+//                    if (tablero[6] == -1 && tablero[2] == 1) {
+//                        if (totalFichas == 5) {
+//                            proxJugada = 1
+//                        } else if (totalFichas == 7) {
+//                            if (tablero[6] == 1) {
+//                                proxJugada = 8
+//                            } else if (tablero[8] == 1) {
+//                                proxJugada = 6
+//                            }
+//                        }
+//                    } else {
+//                        proxJugada = 2
+//                    }
+//                    //----------------------------------------------------------------------------------------------hay que continua por aquí
+//                } else if (tablero[8] == 1) {
+//                    if (tablero[1] == -1 && tablero[7] == 1) {
+//                        proxJugada = 6
+//                    } else {
+//                        proxJugada = 7
+//                    }
+//                    if (tablero[3] == -1 && tablero[5] == 1) {
+//                        proxJugada = 2
+//                    } else {
+//                        proxJugada = 5
+//                    }
+//                    if (tablero[5] == -1 && tablero[3] == 1) {
+//                        proxJugada = 6
+//                    } else {
+//                        proxJugada = 3
+//                    }
+//                    if (tablero[7] == -1 && tablero[1] == 1) {
+//                        proxJugada = 2
+//                    } else {
+//                        proxJugada = 1
+//                    }
+//                }
+//
+//                // esquina sup der -------Done
+//            } else if (tablero[4] == -1 && tablero[2] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 1
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(0, 1, 7).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = listOf(1, 3, 5, 7).random()
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = listOf(0, 3, 5).random()
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 5
+//                }
+//                // esquina inf der
+//            } else if (tablero[4] == -1 && tablero[8] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = listOf(1, 3, 5, 7).random()
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(2, 3, 5).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(1, 2, 7).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 6
+//                }
+//                // esquina inf izq
+//            } else if (tablero[4] == -1 && tablero[6] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(3, 5, 8).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = listOf(1, 3, 5, 7).random()
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = listOf(1, 7, 8).random()
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 7
+//                }
+//                // -------------------------------------------------------------------exterior-medio
+//                // medio--top
+//            } else if (tablero[4] == -1 && tablero[1] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(0, 6).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = listOf(2, 8).random()
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = listOf(0, 3, 5).random()
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = listOf(0, 2, 6, 8).random()
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = listOf(2, 3, 5).random()
+//                }
+//                // medio--left
+//            } else if (tablero[4] == -1 && tablero[3] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 6
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(0, 2).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = listOf(0, 1, 7).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = listOf(0, 2, 6, 8).random()
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = listOf(6, 8).random()
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = listOf(1, 6, 7).random()
+//                }
+//                // medio--right
+//            } else if (tablero[4] == -1 && tablero[5] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = listOf(1, 2, 7).random()
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(0, 2).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(0, 2, 6, 8).random()
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = listOf(1, 7, 8).random()
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = listOf(6, 8).random()
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 2
+//                }
+//                // medio--but
+//            } else if (tablero[4] == -1 && tablero[7] == 1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = listOf(3, 5, 6).random()
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = listOf(0, 2, 6, 8).random()
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = listOf(3, 5, 8).random()
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = listOf(0, 6).random()
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = listOf(2, 8).random()
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 6
+//                }
+//                // ----------------------------------------------------------------------------medio
+//                // left - top
+//            } else if (tablero[4] == 1 && tablero[0] == -1) {
+//                if (tablero[1] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 6
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 1
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 2
+//                }
+//                // right - top
+//            } else if (tablero[4] == 1 && tablero[2] == -1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 1
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 0
+//                }
+//                // left - but
+//            } else if (tablero[4] == 1 && tablero[6] == -1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 8
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 0
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 1
+//                } else if (tablero[8] == 1) {
+//                    proxJugada = 0
+//                }
+//                //right - but
+//            } else if (tablero[4] == 1 && tablero[8] == -1) {
+//                if (tablero[0] == 1) {
+//                    proxJugada = 6
+//                } else if (tablero[1] == 1) {
+//                    proxJugada = 7
+//                } else if (tablero[2] == 1) {
+//                    proxJugada = 6
+//                } else if (tablero[3] == 1) {
+//                    proxJugada = 5
+//                } else if (tablero[5] == 1) {
+//                    proxJugada = 3
+//                } else if (tablero[6] == 1) {
+//                    proxJugada = 2
+//                } else if (tablero[7] == 1) {
+//                    proxJugada = 1
+//                }
+//            }
+//
+//        }
+//
+//        return proxJugada
+//    }
 
 }

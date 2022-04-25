@@ -67,6 +67,9 @@ class OnePlayerViewModel : ViewModel() {
         _tablero.clear()
         _tablero.addAll(tablero)
     }
+    fun getStatusPos(index : Int) : Boolean{
+        return _tablero.get(index) != 0
+    }
 
     // botones--------------------------------------------------------
     private val _botones: MutableList<Int> = mutableListOf()
