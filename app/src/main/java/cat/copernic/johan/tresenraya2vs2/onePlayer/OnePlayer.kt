@@ -346,7 +346,7 @@ class OnePlayer : Fragment() {
             viewModel.upTotalFichas()
             viewModel.setPosTablero(index, player)
 
-            Toast.makeText(activity, "index-$index // tFichas-${viewModel.totalFichas.value} // datoTablero-${viewModel.tablero.get(index)}", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(activity, "index-$index // tFichas-${viewModel.totalFichas.value} // datoTablero-${viewModel.tablero.get(index)}", Toast.LENGTH_SHORT).show()
             comprobarGanador(index, player)
             if (viewModel.estadoPartida.value != 2) {
                 viewModel.setPlayer(2)

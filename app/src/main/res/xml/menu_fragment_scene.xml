@@ -189,7 +189,7 @@
     <Transition
         motion:constraintSetStart="@+id/start"
         motion:constraintSetEnd="@+id/end"
-        motion:autoTransition="none"
+        motion:autoTransition="animateToEnd"
         motion:duration="3000">
         <OnClick />
     </Transition>

@@ -364,15 +364,17 @@ class TwoPlayers : Fragment() {
         val player = 1
         val index = viewModel.botones.indexOf(boton.id)
 
-        setBackgroundPosTablero(index, player)
-        viewModel.upTotalFichas()
-        viewModel.setPosTablero(index, player)
+        if (!viewModel.getStatusPos(index)){
+            setBackgroundPosTablero(index, player)
+            viewModel.upTotalFichas()
+            viewModel.setPosTablero(index, player)
 
-        Toast.makeText(activity, "index-$index // tFichas-${viewModel.totalFichas.value} // datoTablero-${viewModel.tablero.get(index)}", Toast.LENGTH_SHORT).show()
-        comprobarGanador(index, player)
-        if (viewModel.estadoPartida.value != 2) {
-            viewModel.setPlayer(2)
-            binding.tvEstadoModo2.setText(R.string.titulo_jugandoPlayer2)
+            //Toast.makeText(activity, "index-$index // tFichas-${viewModel.totalFichas.value} // datoTablero-${viewModel.tablero.get(index)}", Toast.LENGTH_SHORT).show()
+            comprobarGanador(index, player)
+            if (viewModel.estadoPartida.value != 2) {
+                viewModel.setPlayer(2)
+                binding.tvEstadoModo2.setText(R.string.titulo_jugandoPlayer2)
+            }
         }
     }
 
@@ -380,15 +382,16 @@ class TwoPlayers : Fragment() {
         val player = 2
         val index = viewModel.botones.indexOf(boton.id)
 
-        setBackgroundPosTablero(index, player)
-        viewModel.upTotalFichas()
-        viewModel.setPosTablero(index, player)
+        if (!viewModel.getStatusPos(index)) {
+            setBackgroundPosTablero(index, player)
+            viewModel.upTotalFichas()
+            viewModel.setPosTablero(index, player)
 
-        Toast.makeText(activity, "index-$index // tFichas-${viewModel.totalFichas.value} // datoTablero-${viewModel.tablero.get(index)}", Toast.LENGTH_SHORT).show()
-        comprobarGanador(index, player)
-        if (viewModel.estadoPartida.value != 2) {
-            viewModel.setPlayer(1)
-            binding.tvEstadoModo2.setText(R.string.titulo_jugandoPlayer1)
+            comprobarGanador(index, player)
+            if (viewModel.estadoPartida.value != 2) {
+                viewModel.setPlayer(1)
+                binding.tvEstadoModo2.setText(R.string.titulo_jugandoPlayer1)
+            }
         }
     }
 

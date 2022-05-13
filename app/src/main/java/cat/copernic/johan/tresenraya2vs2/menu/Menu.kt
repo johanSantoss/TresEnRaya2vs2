@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
+import cat.copernic.johan.tresenraya2vs2.MainActivity
 import cat.copernic.johan.tresenraya2vs2.R
 import cat.copernic.johan.tresenraya2vs2.databinding.MenuFragmentBinding
 
@@ -25,14 +26,20 @@ class Menu : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        // generar binding
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.menu_fragment,
             container,
             false
         )
+        // set level a 0 siempre que iniciemos el menú
+        if (viewModel.level.value == 0){
+            viewModel.setLevel((activity as MainActivity).setAndGetLevel(0))
+        }
+        // generar viewModel
         viewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
+        // onClick buttons
         binding.btnEasy.setOnClickListener {
             buttonEasy()
         }
@@ -51,23 +58,19 @@ class Menu : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
     private fun buttonEasy(){
-        binding.btnEasy.setTextColor(Color.BLACK)
-        binding.btnMedio.setTextColor(Color.WHITE)
-        viewModel.setLevel(1)
+        // set and save level
+        viewModel.setLevel((activity as MainActivity).setAndGetLevel(1))
+        // comprobar estado del level para cambio de estado de los botones
+        comprobarEstado()
         Toast.makeText(activity, "Nivel seleccionado: ${viewModel.level.value}", Toast.LENGTH_SHORT).show()
     }
 
     private fun buttonMedio(){
-        binding.btnEasy.setTextColor(Color.WHITE)
-        binding.btnMedio.setTextColor(Color.BLACK)
-        viewModel.setLevel(2)
+        // set and save level
+        viewModel.setLevel((activity as MainActivity).setAndGetLevel(2))
+        // comprobar estado del level para cambio de estado de los botones
+        comprobarEstado()
         Toast.makeText(activity, "Nivel seleccionado: ${viewModel.level.value}", Toast.LENGTH_SHORT).show()
     }
 
@@ -78,8 +81,6 @@ class Menu : Fragment() {
         }else{
             Toast.makeText(activity, "Select level!", Toast.LENGTH_SHORT).show()
         }
-
-
     }
 
     private fun buttonModo2(){
